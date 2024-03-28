@@ -121,9 +121,8 @@ def get_unit_cell_rep(x,y,z):
             'Ox1', 'Ox2', 'Oy1', 'Oy2', 'NotOnSublattice'
     '''
     # Note that x, y, z can be negative
-    if x==0 and y==0 and z==0:
-        return pam.Ni_Cu_orbs
-    elif x==0 and y==0 and z==1:                                           #z=1 is Ni,z=0 is Cu
+    if (x,y,z)==(0,0,0) or (x,y,z)==(2,0,0):                                    
+    #x=2 is Ni,x=0 is Cu
         return pam.Ni_Cu_orbs
     elif abs(x) % 2 == 1 and abs(y) % 2 == 0:
         return pam.O1_orbs

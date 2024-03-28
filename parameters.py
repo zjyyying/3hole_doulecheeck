@@ -2,7 +2,7 @@ import math
 import numpy as np
 M_PI = math.pi
 
-Mc =2
+Mc =4
 
 # Note that Ni-d and O-p orbitals use hole language
 # while Nd orbs use electron language
@@ -31,7 +31,7 @@ ACus = np.arange(6.0, 6.01, 1.0)
 
 B = 0.15
 C = 0.58
-#As = np.arange(100, 100.1, 1.0)
+# As = np.arange(100, 100.1, 1.0)
 # ANis = np.arange(0.0, 0.01, 1.0)
 # ACus = np.arange(0.0, 0.01, 1.0)
 # B = 0
@@ -45,7 +45,7 @@ C = 0.58
 #            hopping signs are considered in dispersion separately
 Norb = 4
 if Norb==7 or Norb==4:
-    #tpds = [0.00001]  # for check_CuO4_eigenvalues.py
+#     tpds = [0.00001]  # for check_CuO4_eigenvalues.py
     tpds = np.linspace(1.3, 1.3, num=1, endpoint=True) #[0.25]
 #     tpds = [0.01]
     tpps = [0.5]
@@ -67,11 +67,11 @@ elif Norb==9 or Norb==11:
          
 #     pps = 0.01
 #     ppp = 0.01
+  
+# tzs =np.arange(0.068,9.01,140)  
 
-tzs =np.arange(0.068,9.01,140)  
 
-
-if_tz_exist = 2
+# if_tz_exist = 2
     #if if_tz_exist = 0,tz exist in all orbits.
     #if if_tz_exist = 1,tz exist in d orbits.
     #if if_tz_exist = 2,tz exist in d3z2r2 orbits.    

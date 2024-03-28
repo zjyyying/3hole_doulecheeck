@@ -65,7 +65,7 @@ def reorder_state(slabel):
 #         if z1==z2:
 #             if s1==s2:
 #                 o12 = list(sorted([orb1,orb2]))
-#                 if o12[0]==orb2:
+#                 if o12[0]==orb2:，
 #                     state_label = [s2,orb2,x2,y2,z2,s1,orb1,x1,y1,z1]
 #                     phase = -1.0  
 #             elif s1=='dn' and s2=='up':
@@ -81,9 +81,8 @@ def reorder_state(slabel):
         state_label = [s2,orb2,x2,y2,z2,s1,orb1,x1,y1,z1]
         phase = -1.0
         
-    # note that z1 can differ from z2 in the presence of two layers
+    # note that both z1 and z2 are on the same layer
     elif (x1,y1)==(x2,y2):     
-        if z1==z2:
             if s1==s2:
                 o12 = list(sorted([orb1,orb2]))
                 if o12[0]==orb2:
@@ -92,10 +91,6 @@ def reorder_state(slabel):
             elif s1=='dn' and s2=='up':
                 state_label = ['up',orb2,x2,y2,z2,'dn',orb1,x1,y1,z1]
                 phase = -1.0
-        elif z1==0 and z2==1:
-            state_label = [s2,orb2,x2,y2,z2,s1,orb1,x1,y1,z1]
-            phase = -1.0  
-
 
             
     return state_label, phase
@@ -317,7 +312,7 @@ class VariationalSpace:
         for ux in range(-Mc,Mc+1):
             Bu = Mc - abs(ux)
             for uy in range(-Bu,Bu+1):
-                for uz in [0,1]:
+                   for uz in [0]:
                     orb1s = lat.get_unit_cell_rep(ux,uy,uz)
                     if orb1s==['NotOnSublattice']:
                         continue
@@ -325,7 +320,7 @@ class VariationalSpace:
                     for vx in range(-Mc,Mc+1):
                         Bv = Mc - abs(vx)
                         for vy in range(-Bv,Bv+1):
-                            for vz in [0,1]:
+                            for vz in [0]:
                                 orb2s = lat.get_unit_cell_rep(vx,vy,vz)
                                 if orb2s==['NotOnSublattice']:
                                     continue
@@ -335,7 +330,7 @@ class VariationalSpace:
                                 for tx in range(-Mc,Mc+1):
                                     Bt = Mc - abs(tx)
                                     for ty in range(-Bt,Bt+1):
-                                        for tz in [0,1]:
+                                        for tz in [0]:
                                             orb3s = lat.get_unit_cell_rep(tx,ty,tz)
                                             if orb3s==['NotOnSublattice'] :
                                                 continue
@@ -372,8 +367,8 @@ class VariationalSpace:
                                                         continue  
 
                                                     # skip states with 4 holes on single layer
-#                                                                                         if uz==vz==tz==wz:
-#                                                                                             continue
+#                                                        if uz==vz==tz==wz:
+#                                                        continue
 
                                                     state = create_state(slabel)
                                                     canonical_state,_,_ = make_state_canonical(state)

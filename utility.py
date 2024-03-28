@@ -111,14 +111,13 @@ def get_NiCu_layer_orbs(state):
     
     Ni_layer = []; Cu_layer = [];Cu_i = []
     for i in range(3):
-        if zs[i]==1:
+        if zs[i]==0:
             Ni_layer.append(ss[i])
             Ni_layer.append(os[i])
             Ni_layer.append(xs[i])
             Ni_layer.append(ys[i])
             Ni_layer.append(zs[i])
             Ni_i.append(i)
-        else:
             Cu_layer.append(ss[i])
             Cu_layer.append(os[i])
             Cu_layer.append(xs[i])
@@ -142,7 +141,7 @@ def get_statistic_orb(os):
     Nos = len(os)
     assert(Nos>0)
     
-    nNi_Cu = 0; nO = 0
+    nNi_Cu = 0; nO = 0 #这里n表示在ni cu上空穴的数量
     dorbs=[]; porbs=[]
     
     for i in range(Nos):
@@ -169,11 +168,11 @@ def get_orb_edep(orb,z,epCu,epNi):
     '''
     resarch for orb's edep
     ''' 
-    if orb in pam.Ni_Cu_orbs and z==1: 
+    if orb in pam.Ni_Cu_orbs and z==0: 
         diag_el = pam.edNi[orb]
     elif orb in pam.Ni_Cu_orbs and z==0: 
         diag_el = pam.edCu[orb]  
-    elif orb in pam.O_orbs and z==1: 
+    elif orb in pam.O_orbs and z==0: 
         diag_el = epNi
     elif orb in pam.O_orbs and z==0: 
         diag_el = epCu
